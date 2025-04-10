@@ -18,9 +18,9 @@ def evaluate(model: RandomForestClassifier, X, y, split: str, live: Live):
         f"{split}/average_precision",
         average_precision_score(y, model.predict_proba(X), average="macro"),
     )
-    live.log_sklearn_plot('confusion_matrix', predictions=y_pred, labels=y
+    live.log_sklearn_plot('confusion_matrix', predictions=y_pred, labels=y)
     live.log_metric(f"{split}/recall", recall_score(y, y_pred, average="macro"))
- 
+    live.make_report()
  
 X, y = datasets.load_iris(as_frame=True, return_X_y=True)
  
@@ -28,7 +28,7 @@ X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42
 )
  
-with Live("experiments") as live:
+with Live("experiments", report='md') as live:
     model = RandomForestClassifier(
         n_estimators=config.model.n_estimators,
         max_depth=config.model.max_depth,

@@ -1,0 +1,14 @@
+schema: '2.0'
+stages:
+  train_model:
+    cmd: python app.py
+    deps:
+    - path: app.py
+      hash: md5
+      md5: f17a312b0c77f055d2c22ca943bbc87a
+      size: 1410
+    params:
+      params.yaml:
+        model:
+          n_estimators: 10
+          max_depth: 2

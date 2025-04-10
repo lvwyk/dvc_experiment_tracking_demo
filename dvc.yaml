@@ -1,0 +1,19 @@
+stages:
+  train_model:
+    cmd: python app.py
+    deps:
+    - app.py
+    params:
+    - model
+metrics:
+- experiments/metrics.json
+plots:
+- experiments/plots/metrics:
+    x: step
+- experiments/plots/sklearn/confusion_matrix.json:
+    template: confusion
+    x: actual
+    y: predicted
+    title: Confusion Matrix
+    x_label: True Label
+    y_label: Predicted Label
