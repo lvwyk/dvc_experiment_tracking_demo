@@ -10,5 +10,5 @@ stages:
     params:
       params.yaml:
         model:
-          n_estimators: 10
+          n_estimators: 12
           max_depth: 2
